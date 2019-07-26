@@ -15,10 +15,8 @@ export default {
     },
     shake(e) {
       e.preventDefault();
-      console.log(this.question);
       const index = [Math.floor(Math.random() * this.answers.length)];
       this.answer = this.answers[index];
-      console.log(this.answer);
       this.toggle();
     },
     reset() {
