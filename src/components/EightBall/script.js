@@ -7,7 +7,8 @@ export default {
       answers: data.answers,
       question: null,
       answer: null,
-      shaken: false
+      shaken: false,
+      regex: /\b(who|what|when|where|why|how)\b/gi
     };
   },
   methods: {
@@ -77,12 +78,18 @@ export default {
         return null;
       } else if (this.question.length === 0) {
         return false;
+      } else if (this.question.match(this.regex)) {
+        return false;
       } else {
         return true;
       }
     },
     invalidFeedback() {
-      if (this.question === null || this.question.length > 0) {
+      if (this.question === null) {
+        return "";
+      } else if (this.question.length > 0 && this.question.match(this.regex)) {
+        return "Gotta ask a yes/no question!";
+      } else if (this.question.length > 0 && !this.question.match(this.regex)) {
         return "";
       } else {
         return "Gotta enter something!";
