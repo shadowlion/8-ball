@@ -3,12 +3,14 @@
     img(src="@/assets/8-ball.png" width="100px")
     h1.mt-5 Hannah's 8-Ball
     div(v-if="!shaken")
-      b-form(@submit="shake" @reset="reset" v-if="!shaken")
+      b-form(@submit="shake" @reset="reset" v-if="!shaken" no-validate)
         b-form-group(
           label="Ask a question below and maybe you'll get the answers you seek..."
           label-for="question"
+          :invalid-feedback="invalidFeedback"
+          :state="state"
         )
-          b-form-input(id="question" v-model="question" trim)
+          b-form-input(id="question" v-model="question" :state="state" trim)
         b-button(block type="submit" variant="primary") Submit
     div(v-if="shaken")
       p {{ answer }}
@@ -68,6 +70,24 @@ export default {
       this.question = null;
       this.answer = null;
       this.toggle();
+    }
+  },
+  computed: {
+    state() {
+      if (this.question === null) {
+        return null;
+      } else if (this.question.length === 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+    invalidFeedback() {
+      if (this.question === null || this.question.length > 0) {
+        return "";
+      } else {
+        return "Gotta enter something!";
+      }
     }
   }
 };
