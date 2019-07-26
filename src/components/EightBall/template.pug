@@ -10,7 +10,12 @@
         :state="state"
       )
         b-form-input(id="question" v-model="question" :state="state" trim)
-      b-button(block type="submit" variant="primary") Submit
+      b-button(
+        block
+        type="submit"
+        variant="primary"
+        :disabled="!disableBtn"
+      ) Submit
   div(v-if="shaken")
     p {{ answer }}
     button.btn.btn-primary.btn-block(@click="reset") Shake Again!

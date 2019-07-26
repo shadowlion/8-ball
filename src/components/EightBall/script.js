@@ -33,7 +33,7 @@ export default {
           "https://hooks.slack.com/services/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";
         const data = {
           type: "mrkdwn",
-          text: "Hello World!",
+          text: "A user submitted the form without the question",
           blocks: [
             {
               type: "section",
@@ -73,6 +73,13 @@ export default {
     }
   },
   computed: {
+    disableBtn() {
+      return (
+        this.question !== null &&
+        this.question.length > 0 &&
+        !this.question.match(this.regex)
+      );
+    },
     state() {
       if (this.question === null) {
         return null;
