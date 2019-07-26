@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import EightBall from "./components/EightBall";
+import EightBall from "./components/EightBall/index";
 
 export default {
   name: "app",
