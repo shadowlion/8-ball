@@ -1,25 +1,30 @@
 <template>
   <div id="app">
-    <eight-ball />
+    <img src="@/assets/8-ball.png" width="100px" />
+    <h1>Hannah's 8-Ball</h1>
+    <eight-ball-form />
   </div>
 </template>
 
-<script>
-import EightBall from "./components/EightBall/index";
+<script lang="ts">
+import Vue from "vue";
+import EightBallForm from "./components/EightBallForm.vue";
 
-export default {
+export default Vue.extend({
   name: "app",
   components: {
-    EightBall
+    EightBallForm
   }
-};
+});
 </script>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+
+<style>
+#app {
+  font-family: "Avenir", "Helvetica", "Arial", "sans-serif";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>
