@@ -1,4 +1,4 @@
-export const answers = [
+export default [
   "Yes.",
   "Maybe?",
   "Would Justin say so?",

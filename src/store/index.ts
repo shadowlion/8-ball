@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { answers } from "../data";
+import answers from "../answers";
 
 Vue.use(Vuex);
 
