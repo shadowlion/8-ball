@@ -1,10 +1,36 @@
-import data from "./data.json";
+<template lang="pug">
+.container
+  img(src="@/assets/8-ball.png" width="100px")
+  h1.mt-5 Hannah's 8-Ball
+  div(v-if="!shaken")
+    b-form(@submit="shake" @reset="reset" v-if="!shaken" no-validate)
+      b-form-group(
+        label="Ask a question below and maybe you'll get the answers you seek..."
+        label-for="question"
+        :invalid-feedback="invalidFeedback"
+        :state="state"
+      )
+        b-form-input(id="question" v-model="question" :state="state" trim)
+      b-button(
+        block
+        type="submit"
+        variant="primary"
+        :disabled="!disableBtn"
+      ) Submit
+  div(v-if="shaken")
+    p {{ answer }}
+    button.btn.btn-primary.btn-block(@click="reset") Shake Again!
+</template>
+
+<script lang="ts">
+import Vue from "vue";
+import { answers } from "./data";
 import axios from "axios";
 
-export default {
+export default Vue.extend({
   data() {
     return {
-      answers: data.answers,
+      answers,
       question: null,
       answer: null,
       shaken: false,
@@ -17,9 +43,9 @@ export default {
     },
     shake(e) {
       e.preventDefault();
-      const index = [Math.floor(Math.random() * this.answers.length)];
+      const index = Math.floor(Math.random() * this.answers.length);
       this.answer = this.answers[index];
-      this.sendToSlack(this.question, this.answer);
+      // this.sendToSlack(this.question, this.answer);
       this.toggle();
     },
     reset() {
@@ -103,4 +129,5 @@ export default {
       }
     }
   }
-};
+});
+</script>

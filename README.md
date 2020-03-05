@@ -4,7 +4,7 @@ A simple 8-ball frontend app
 
 Stack:
 
-- VueJS
+- VueJS (Typescript)
 - Pug
 - Bootstrap 4
 
