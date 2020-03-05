@@ -3,8 +3,8 @@
     <form @submit.prevent="shake" @reset="reset" v-if="!shaken" novalidate>
       <label for="question">
         Ask a question below and maybe you'll get the answers you seek...
-        <input type="text" id="question" v-model="question" />
       </label>
+      <input type="text" id="question" v-model="question" />
       <button type="submit">Submit</button>
     </form>
     <section v-else>
